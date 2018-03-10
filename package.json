@@ -1,0 +1,43 @@
+{
+  "version": "0.0.0-development",
+  "name": "@cachepile/middleware",
+  "description": "CachePile Express Middleware",
+  "author": "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
+  "homepage": "https://github.com/cachepile/middleware",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cachepile/middleware.git"
+  },
+  "license": "ISC",
+  "main": "index.js",
+  "keywords": [
+    "cachepile",
+    "cache",
+    "http",
+    "rest",
+    "proxy"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/cachepile/middleware/issues"
+  },
+  "scripts": {
+    "pretest": "npm run test:codeclimate",
+    "test": "npm run test:tap",
+    "test:codeclimate": ".scripts/codeclimate analyze",
+    "test:tap": "tap test --100 --coverage-report=lcov --no-browser",
+    "coverage": "opener coverage/lcov-report/index.html"
+  },
+  "devDependencies": {
+    "tap": "^11.1.2"
+  }
+}
