@@ -12,11 +12,29 @@ npm install --production --save @cachepile/middleware
 
 ### lib()
 
+#### Middleware usage 
 ```js
+const express = require('express')
 const middleware = require('@cachepile/middleware')
 
+const app = express()
 app.use(middleware)
+app.listen(3000, () =>  console.log(`Cachepile listening on 3000`))
 ```
+
+```bash
+# call api to cache through the proxy
+curl -i -H "cp-target-port: 443" -H "cp-ttl: 10" -H "CP-TARGET-HOST: reqres.in" -H "CP-TARGET-PROTO: https"  localhost:3000/api/users
+```
+
+#### Headers
+| Header | Description | Default Value |
+| ------------- | ------------- | ------------- |
+| CP-FORCE | Force request to call through to specified end point | false |
+| CP-TARGET-HOST | host of endpoint to cache | requested host |
+| CP-TARGET-PORT | port of endpoint to cache | requested port |
+| CP-TARGET-PROTO | protocol for endpoint to cache | http |
+| CP-TTL | time in seconds to cache response | 1 |
 
 ---
 > License: [ISC][license-url] &bull; 
