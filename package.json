@@ -9,7 +9,7 @@
     "url": "https://github.com/cachepile/middleware.git"
   },
   "license": "ISC",
-  "main": "index.js",
+  "main": "lib/proxy.js",
   "keywords": [
     "cachepile",
     "cache",
@@ -24,8 +24,7 @@
     "node": ">=6"
   },
   "files": [
-    "lib",
-    "index.js"
+    "lib"
   ],
   "bugs": {
     "url": "https://github.com/cachepile/middleware/issues"
@@ -39,5 +38,13 @@
   },
   "devDependencies": {
     "tap": "^11.1.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
+    "redis": "^2.8.0"
+  },
+  "peerDependencies": {
+    "express": "^4.16.2"
   }
 }
