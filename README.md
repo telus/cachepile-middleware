@@ -1,6 +1,6 @@
 ![Logo](https://github.com/cachepile/brand/blob/master/logo.svg)
 
-# Cachepile Express Middleware [![version][npm-version]][npm-url] [![License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Downloads][npm-downloads]][npm-url] [![Coverage Status][codeclimate-coverage]][codeclimate-url]
+# Cachepile Express Middleware [![version][npm-version]][npm-url] [![License][license-image]][license-url] [![Build Status][travis-image]][travis-url]
 
 > [CachePile][cachepile] Express Middleware
 
@@ -52,9 +52,5 @@ curl -i -H "cp-target-port: 443" -H "cp-ttl: 10" -H "CP-TARGET-HOST: reqres.in" 
 
 [npm-url]: https://www.npmjs.com/package/@cachepile/middleware
 [npm-version]: https://img.shields.io/npm/v/@cachepile/middleware.svg?style=flat-square
-[npm-downloads]: https://img.shields.io/npm/dm/@cachepile/middleware.svg?style=flat-square
-
-[codeclimate-url]: https://codeclimate.com/github/@cachepile/middleware
-[codeclimate-coverage]: https://api.codeclimate.com/v1/badges/3224d0be31c96123ca4d/test_coverage?style=flat-square
 
 [cachepile]: https://cachepile.github.io
