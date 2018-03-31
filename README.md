@@ -1,3 +1,5 @@
+![](https://raw.githubusercontent.com/cachepile/brand/master/logo.svg)
+
 # Cachepile Express Middleware [![version][npm-version]][npm-url] [![License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Downloads][npm-downloads]][npm-url] [![Coverage Status][codeclimate-coverage]][codeclimate-url]
 
 > [CachePile][cachepile] Express Middleware
