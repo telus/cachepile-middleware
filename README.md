@@ -14,7 +14,8 @@ npm install --production --save @cachepile/middleware
 
 ### lib()
 
-#### Middleware usage 
+#### Middleware usage
+
 ```js
 const express = require('express')
 const middleware = require('@cachepile/middleware')
@@ -30,27 +31,32 @@ curl -i -H "cp-target-port: 443" -H "cp-ttl: 10" -H "CP-TARGET-HOST: reqres.in" 
 ```
 
 #### Headers
-| Header | Description | Default Value |
-| ------------- | ------------- | ------------- |
-| CP-FORCE | Force request to call through to specified end point | false |
-| CP-TARGET-HOST | host of endpoint to cache | requested host |
-| CP-TARGET-PORT | port of endpoint to cache | requested port |
-| CP-TARGET-PROTO | protocol for endpoint to cache | http |
-| CP-TTL | time in seconds to cache response | 1 |
+
+Header          | Description                                          | Default Value 
+--------------- | ---------------------------------------------------- | --------------
+CP-FORCE        | Force request to call through to specified end point | false         
+CP-TARGET-HOST  | host of endpoint to cache                            | requested host
+CP-TARGET-PORT  | port of endpoint to cache                            | requested port
+CP-TARGET-PROTO | protocol for endpoint to cache                       | http          
+CP-TTL          | time in seconds to cache response                    | 1             
 
 ---
-> License: [ISC][license-url] &bull; 
-> Copyright: [ahmadnassri.com](https://www.ahmadnassri.com) &bull; 
-> Github: [@ahmadnassri](https://github.com/ahmadnassri) &bull; 
+
+> License: [ISC][license-url] • 
+> Copyright: [ahmadnassri.com](https://www.ahmadnassri.com) • 
+> Github: [@ahmadnassri](https://github.com/ahmadnassri) • 
 > Twitter: [@ahmadnassri](https://twitter.com/ahmadnassri)
 
 [license-url]: http://choosealicense.com/licenses/isc/
+
 [license-image]: https://img.shields.io/github/license/cachepile/middleware.svg?style=flat-square
 
 [travis-url]: https://travis-ci.org/cachepile/middleware
+
 [travis-image]: https://img.shields.io/travis/cachepile/middleware.svg?style=flat-square
 
 [npm-url]: https://www.npmjs.com/package/@cachepile/middleware
+
 [npm-version]: https://img.shields.io/npm/v/@cachepile/middleware.svg?style=flat-square
 
 [cachepile]: https://cachepile.github.io
