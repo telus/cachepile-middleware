@@ -39,10 +39,10 @@ Commit messages should follow the [commit message convention](./COMMIT_CONVENTIO
 
 There are a few scripts available in the `scripts` section of the `package.json` file.
 
-The default `test` script will do the following: 
+The default `test` script will do the following:
 
-* run `codeclimate analyze` as a pre-test step
-* runs `tap test` with enforcement of 100% coverage
+- run `codeclimate analyze` as a pre-test step
+- runs `tap test` with enforcement of 100% coverage
 
 [code-of-conduct]: ./CODE_OF_CONDUCT.md
 [lts]: https://github.com/nodejs/Release

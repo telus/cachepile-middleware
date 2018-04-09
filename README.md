@@ -32,19 +32,19 @@ curl -i -H "cp-target-port: 443" -H "cp-ttl: 10" -H "CP-TARGET-HOST: reqres.in" 
 
 #### Headers
 
-Header          | Description                                          | Default Value 
+Header          | Description                                          | Default Value
 --------------- | ---------------------------------------------------- | --------------
-CP-FORCE        | Force request to call through to specified end point | false         
+CP-FORCE        | Force request to call through to specified end point | false
 CP-TARGET-HOST  | host of endpoint to cache                            | requested host
 CP-TARGET-PORT  | port of endpoint to cache                            | requested port
-CP-TARGET-PROTO | protocol for endpoint to cache                       | http          
-CP-TTL          | time in seconds to cache response                    | 1             
+CP-TARGET-PROTO | protocol for endpoint to cache                       | http
+CP-TTL          | time in seconds to cache response                    | 1
 
 ---
 
-> License: [ISC][license-url] • 
-> Copyright: [ahmadnassri.com](https://www.ahmadnassri.com) • 
-> Github: [@ahmadnassri](https://github.com/ahmadnassri) • 
+> License: [ISC][license-url] •
+> Copyright: [ahmadnassri.com](https://www.ahmadnassri.com) •
+> Github: [@ahmadnassri](https://github.com/ahmadnassri) •
 > Twitter: [@ahmadnassri](https://twitter.com/ahmadnassri)
 
 [license-url]: http://choosealicense.com/licenses/isc/

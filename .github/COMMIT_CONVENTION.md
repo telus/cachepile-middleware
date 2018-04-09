@@ -1,18 +1,20 @@
-## Commit Message Guidelines
+# Commit Message Guidelines
 
-We have very precise rules over how our git commit messages can be formatted.  This leads to **more
-readable messages** that are easy to follow when looking through the **project history**.  But also,
+We have very precise rules over how our git commit messages can be
+formatted.  This leads to **more
+readable messages** that are easy to follow when looking through the
+**project history**.  But also,
 we use the git commit messages to **generate the change log**.
 
-
-### Commit Message Format
+## Commit Message Format
 
 > Before reading any further, We reccomend using [Commitizen](https://github.com/commitizen/cz-cli) to automate creating commit messagess.
 
-Each commit message consists of a **header**, a **body** and a **footer**.  The header has a special
+Each commit message consists of a **header**, a **body** and a **footer**.  The
+header has a special
 format that includes a **type**, a **scope** and a **subject**:
 
-```
+```text
 <type>(<scope>): <subject>
 <BLANK LINE>
 <body>
@@ -22,17 +24,19 @@ format that includes a **type**, a **scope** and a **subject**:
 
 The **header** is mandatory and the **scope** of the header is optional.
 
-Any line of the commit message cannot be longer 100 characters! This allows the message to be easier
-to read on GitHub as well as in various git tools.
+Any line of the commit message cannot be longer 100 characters! This allows the
+message to be easier to read on GitHub as well as in various git tools.
 
-Footer should contain a [closing reference to an issue](https://help.github.com/articles/closing-issues-via-commit-messages/) if any.
+Footer should contain a [closing reference to an issue](https://help.github.com/articles/closing-issues-via-commit-messages/)
+if any.
 
 Samples: _(even more [samples](../../commits/master))_
 
-```
+```text
 docs(readme): update API example
 ```
-```
+
+```text
 refactor(core): rename `bindX()` functions to `interpolationX()`
 
 rationale: remove the confusion with `bind()` and `bind0()`
@@ -40,7 +44,8 @@ rationale: remove the confusion with `bind()` and `bind0()`
 PR Close #22229
 ```
 
-### Type
+## Type
+
 Must be one of the following:
 
 * **feat**: A new feature
@@ -55,22 +60,28 @@ Must be one of the following:
 * **chore**: Other changes that don't modify src or test files
 * **revert**: Reverts a previous commit
 
-### Scope
+## Scope
+
 The scope should be the name of the module affected (as perceived by person reading changelog generated from commit messages).
 
-### Subject
+## Subject
+
 The subject contains succinct description of the change:
 
 * use the imperative, present tense: "change" not "changed" nor "changes"
 * don't capitalize first letter
 * no dot (.) at the end
 
-### Body
-Just as in the **subject**, use the imperative, present tense: "change" not "changed" nor "changes".
-The body should include the motivation for the change and contrast this with previous behavior.
+## Body
 
-### Footer
-The footer should contain any information about **Breaking Changes** and is also the place to
-reference GitHub issues that this commit **Closes**.
+Just as in the **subject**, use the imperative, present tense: "change" not
+"changed" nor "changes". The body should include the motivation for the change
+and contrast this with previous behavior.
 
-**Breaking Changes** should start with the word `BREAKING CHANGE:` with a space or two newlines. The rest of the commit message is then used for this.
+## Footer
+
+The footer should contain any information about **Breaking Changes** and is also
+the place to reference GitHub issues that this commit **Closes**.
+
+**Breaking Changes** should start with the word `BREAKING CHANGE:` with a space
+or two newlines. The rest of the commit message is then used for this.
