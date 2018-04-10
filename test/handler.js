@@ -6,18 +6,15 @@ const redisClient = require('../lib/redis')
 const events = require('../lib/events')
 const sampleResponse = require('./mocks/sample-data')
 
-const createNullRedisInstanceStub = () => {
-  const stub = sandbox.stub(redisClient, 'instance')
-  stub.get(() => ({
-    get: async () => Promise.resolve(null)
-  }))
-  return stub
-}
-
 let sandbox
-let redisInstanceStub
 let request
 let response
+
+const createRedisInstanceStub = (retrunValues) => {
+  const stub = sandbox.stub(redisClient, 'instance')
+  stub.get(() => retrunValues)
+  return stub
+}
 
 tap.beforeEach((end) => {
   sandbox = sinon.sandbox.create()
@@ -51,16 +48,16 @@ tap.test('should return cached response', async (t) => {
   request.headers.host = 'host'
   request.headers.date = 'Date: Tue, 15 Nov 2018 08:12:31 GMT'
 
-  redisInstanceStub = sandbox.stub(redisClient, 'instance')
   const stubReturn = {
-    get: async () => Promise.resolve({
+    get: () => Promise.resolve({
       statusCode: 200,
       headers: JSON.stringify({}),
       body: JSON.stringify(sampleResponse)
-    })
+    }),
+    quit: sandbox.spy()
   }
-  redisInstanceStub.get(() => (stubReturn))
   const stubReturnSpy = sandbox.spy(stubReturn, 'get')
+  createRedisInstanceStub(stubReturn)
 
   await handler.proxyHandler(request, response)
 
@@ -71,26 +68,37 @@ tap.test('should return cached response', async (t) => {
   t.ok(response.set.calledWith({}), 'set headers')
   t.ok(response.status.called, 'set status')
   t.ok(response.end.called, 'end request')
+  t.ok(stubReturn.quit.called)
   t.end()
 })
 
 tap.test('should return early', async (t) => {
+  const stubValues = {
+    get: () => Promise.resolve(null),
+    quit: sinon.spy()
+  }
+
   request.headers['cp-wait'] = 'false'
-  redisInstanceStub = createNullRedisInstanceStub()
+  createRedisInstanceStub(stubValues)
   await handler.proxyHandler(request, response)
   t.ok(response.status.calledWith(201), 'returns early')
   t.ok(response.send.called, 'sends response')
+  t.ok(stubValues.quit.called)
   t.end()
 })
 
 tap.test('should use https', async (t) => {
-  request.headers['cp-wait'] = 'true'
-  request.headers['cp-target-proto'] = 'https'
-  redisInstanceStub = createNullRedisInstanceStub()
   const stubReturn = {
     on: sandbox.spy(),
     end: sandbox.spy()
   }
+  const redisStubValues = {
+    get: () => Promise.resolve(null),
+    quit: sinon.spy()
+  }
+  createRedisInstanceStub(redisStubValues)
+  request.headers['cp-wait'] = 'true'
+  request.headers['cp-target-proto'] = 'https'
   const noop = () => { }
   const stub = sandbox.stub(followRedirects.https, 'request').returns(stubReturn)
   sandbox.stub(events, 'handleRequestResponse').returns(noop)
@@ -100,13 +108,18 @@ tap.test('should use https', async (t) => {
   t.ok(stubReturn.on.calledWith('error', events.handleRequestError), 'called with error handler')
   t.ok(stubReturn.on.calledWith('response', noop), 'called with response handler')
   t.ok(stubReturn.on.calledWith('request', noop), 'called with request start handler')
+  t.ok(redisStubValues.quit.called)
   t.end()
 })
 
 tap.test('should use http', async (t) => {
   request.headers['cp-wait'] = 'true'
   request.headers['cp-target-proto'] = 'http'
-  redisInstanceStub = createNullRedisInstanceStub()
+  const redisStubValues = {
+    get: () => Promise.resolve(null),
+    quit: sinon.spy()
+  }
+  createRedisInstanceStub(redisStubValues)
   const stubReturn = {
     on: sandbox.spy(),
     end: sandbox.spy()
@@ -120,5 +133,6 @@ tap.test('should use http', async (t) => {
   t.ok(stubReturn.on.calledWith('error', events.handleRequestError), 'called with error handler')
   t.ok(stubReturn.on.calledWith('response', noop), 'called with response handler')
   t.ok(stubReturn.on.calledWith('request', noop), 'called with request start handler')
+  t.ok(redisStubValues.quit.called)
   t.end()
 })
