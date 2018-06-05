@@ -14,7 +14,7 @@ let redisInstanceValues
 let outgoing
 
 tap.beforeEach((next) => {
-  sandbox = sinon.sandbox.create()
+  sandbox = sinon.createSandbox()
   redisInstanceValues = {
     set: sandbox.stub().resolves(),
     expire: sandbox.stub().resolves(),

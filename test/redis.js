@@ -7,7 +7,7 @@ let config
 let sandbox
 
 tap.beforeEach((next) => {
-  sandbox = sinon.sandbox.create()
+  sandbox = sinon.createSandbox()
   config = {
     host: '127.0.0.1',
     port: 6379
