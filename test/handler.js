@@ -51,7 +51,9 @@ tap.test('should return cached response', async (t) => {
   const stubReturn = {
     get: () => Promise.resolve({
       statusCode: 200,
-      headers: JSON.stringify({}),
+      headers: JSON.stringify({
+        'transfer-encoding': 'chunked'
+      }),
       body: JSON.stringify(sampleResponse)
     }),
     quit: sandbox.spy()
@@ -64,7 +66,7 @@ tap.test('should return cached response', async (t) => {
   t.ok(stubReturnSpy.calledWith('091d3a75ab90e1fe9fd020248244fdc34068bc2e'))
   t.notOk(request.headers.host, 'removes host from header')
   t.notOk(request.headers.date, 'removes date from headers')
-  t.ok(response.send.calledWith(sampleResponse), 'send response to client')
+  t.ok(response.send.calledWith(JSON.stringify(sampleResponse)), 'send response to client')
   t.ok(response.set.calledWith({}), 'set headers')
   t.ok(response.status.called, 'set status')
   t.ok(response.end.called, 'end request')
