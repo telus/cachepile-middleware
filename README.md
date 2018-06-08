@@ -21,9 +21,19 @@ const express = require('express')
 const middleware = require('@cachepile/middleware')
 
 const app = express()
-app.use(middleware)
+app.use(middleware())
 app.listen(3000, () =>  console.log(`Cachepile listening on 3000`))
 ```
+
+#### Configs
+
+You can pass in an options object into the middleware initialization.  Here are the options:
+Key          | Description                                          | Default Value
+------------ | ---------------------------------------------------- | --------------
+headerPrefix | specify the prefix for the headers                   | cp
+redis        | redis node is used under the hood.  See a list of options [here](https://github.com/NodeRedis/node_redis#rediscreateclient)
+
+#### Client usage
 
 ```bash
 # call api to cache through the proxy
@@ -39,6 +49,8 @@ CP-TARGET-HOST  | host of endpoint to cache                            | request
 CP-TARGET-PORT  | port of endpoint to cache                            | requested port
 CP-TARGET-PROTO | protocol for endpoint to cache                       | http
 CP-TTL          | time in seconds to cache response                    | 1
+CP-WAIT         | if set to false(default) the proxy will wait for the response from the server before responding to the client request.  Otherwise, it will return 201 and fetch the request in the background. | false
+
 
 ---
 
