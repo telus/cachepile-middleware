@@ -50,8 +50,6 @@ CP-TARGET-PORT  | port of endpoint to cache                            | request
 CP-TARGET-PROTO | protocol for endpoint to cache                       | http
 CP-TTL          | time in seconds to cache response                    | 1
 CP-WAIT         | if set to false(default) the proxy will wait for the response from the server before responding to the client request.  Otherwise, it will return 201 and fetch the request in the background. | false
-
-
 ---
 
 > License: [ISC][license-url] •
